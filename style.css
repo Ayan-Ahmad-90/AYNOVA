@@ -1,0 +1,102 @@
+/* style.css - header, body, basic layout */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    /* full-bleed background kept */
+    background: url('https://wallpapercave.com/wp/wp12575692.jpg') no-repeat center/cover fixed;
+    color: #fff;
+}
+
+/* Header (keeps full width; inner content centered by max-width rules below) */
+.hdr {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 20px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* header above slider/hero */
+    background-color: rgba(220, 20, 60, 0.95);
+    /* backdrop-filter: blur(0.2px); */
+}
+
+/* Center page content inside a max-width so navbar items don't overflow */
+.hdr,
+.slider,
+.hero,
+.container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Logo */
+.logo img {
+    height: 50px;
+    border-radius: 5px;
+    display: block;
+    mix-blend-mode:color-burn; 
+}
+
+/* Search */
+.search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search input {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    min-width: 180px;
+}
+
+.searchb {
+    padding: 6px 10px;
+    border: none;
+    color: crimson;
+    border-radius: 6px;
+    background: #141414;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+.searchb:hover { background: orange; transform: translateY(-1px); }
+
+/* Navigation Bar - flex:1 so it uses remaining space and centers links */
+.nav_bar {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    flex-direction: row;   /* Always row */
+    flex-wrap: nowrap;     /* Prevent wrap */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav_bar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+}
+
+.nav_bar a:hover {
+    background: rgba(255,255,255,0.06);
+    color: #ffeb80;
+}
+
+/* Settings icon container alignment */
+.set { display: flex; align-items: center; }
+.set img { border-radius: 50%; cursor: pointer; transition: transform .3s; }
+.set img:hover { transform: rotate(90deg); }

@@ -1,0 +1,257 @@
+/* styles.css - slider, hero, containers, boxes, responsive rules */
+
+/* SLIDER */
+.slider {
+    width: 100%;
+    overflow: hidden;
+    height: 50px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 60px;           /* sits under the header (header height = 60px) */
+    z-index: 900;
+    opacity: 0.95;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    border-bottom: 2px solid crimson;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* .slider constrained by max-width from style.css via selector .slider above */
+
+/* Slides row */
+.slides {
+    display: flex;
+    gap: 20px;
+    animation: slide 15s linear infinite;
+    align-items: center;
+}
+
+/* Individual slide */
+.slide {
+    min-width: 260px;    /* fixed readable width */
+    padding: 0 22px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:rgb(49, 44, 48);
+    border-radius: 8px;
+    font-size: 17px;
+    white-space: nowrap;
+    transition: background .2s ease, transform .15s ease;
+}
+.slide:hover { background: #ff4d4d; transform: translateY(-2px); }
+
+/* SLIDE KEYFRAMES - translate left half of full width then loop */
+@keyframes slide {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(-100%); }
+    50%  { transform: translateX(-200%); }
+    75%  { transform: translateX(-300%); }
+    100% { transform: translateX(-400%); }
+}
+
+/* HERO SECTION (Netflix style) */
+.hero {
+    position: relative;           /* not absolute, so it won't overlap header */
+    max-width: 1200px;
+    margin: 20px auto 40px auto;  /* keeps gap from header/slider and next sections */
+    height: 60vh;                 /* slightly smaller than before */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;        /* content at lower-left like Netflix */
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Background image layer */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url("https://wallpapercave.com/wp/wp1917156.jpg") no-repeat center/cover;
+    filter: brightness(0.45);
+    z-index: 1;
+}
+
+/* Content over the background */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    color: #fff;
+}
+
+.hero-title {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.hero-desc {
+    font-size: 16px;
+    margin-bottom: 18px;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+/* Buttons row */
+.hero-buttons { display: flex; gap: 12px; }
+
+.hero-buttons .btn {
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform .12s ease, opacity .12s ease;
+}
+.hero-buttons .play { background: #fff; color: #000; }
+.hero-buttons .info { background: rgba(109,109,110,0.7); color: #fff; }
+.hero-buttons .btn:hover { transform: translateY(-3px); opacity: 0.95; }
+
+/* SECTION TITLE spacing */
+.section-title {
+    color: red;
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+/* CONTAINERS (rows of boxes) */
+/* Note: max-width applied at top keeps these centered */
+.container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 10px auto 40px auto;
+    padding: 0 20px;
+}
+
+/* BOX base style - each box is relative so its caption can be absolute bottom */
+.box, .box1, .box2, .box3, .box4, .box5 {
+    position: relative;
+    width: 23%;           /* will allow 4 items per row within 1200px */
+    min-width: 220px;     /* avoids becoming too small */
+    height: 40vh;
+    border: 2px solid #e61111;
+    border-radius: 18px;
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* caption at bottom */
+.box p, .box1 p, .box2 p, .box3 p, .box4 p, .box5 p {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* small gap between hero and first container: ensure trending not too close */
+.hero + .section-title { margin-top: 18px; }
+/* ===============================
+   Responsive Header & Navigation
+================================= */
+@media (max-width: 1024px) {
+    .hdr {
+        padding: 0 12px;
+        height: 56px;
+    }
+    .logo img { height: 40px; }
+    .nav_bar a { font-size: 15px; padding: 5px 6px; }
+    .search input { min-width: 150px; padding: 5px 8px; }
+}
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .hdr {
+        padding: 0 10px;
+        height: 54px;
+        gap: 8px;
+    }
+    .nav_bar {
+        gap: 10px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .nav_bar::-webkit-scrollbar { display: none; }
+    .nav_bar a {
+        font-size: 14px;
+        padding: 4px 5px;
+    }
+    .search input { min-width: 130px; }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .hdr {
+        padding: 0 8px;
+        height: 50px;
+        gap: 6px;
+    }
+    .logo img { height: 36px; }
+    .nav_bar {
+        gap: 8px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .nav_bar::-webkit-scrollbar { display: none; }
+    .nav_bar a {
+        font-size: 12px;
+        padding: 3px 4px;
+    }
+    .search input {
+        min-width: 110px;
+        padding: 4px 6px;
+    }
+    .searchb { padding: 4px 6px; font-size: 12px; }
+}
+
+/* ===============================
+   Responsive Boxes & Slider
+================================= */
+@media (max-width: 1024px) {
+    .box, .box1, .box2, .box3, .box4, .box5 {
+        width: 31%; min-width: 180px; height: 35vh;
+    }
+    .slide { min-width: 200px; }
+}
+
+@media (max-width: 768px) {
+    .box, .box1, .box2, .box3, .box4, .box5 {
+        width: 48%; min-width: 160px; height: 32vh;
+    }
+    .slide { min-width: 180px; font-size: 14px; padding: 0 12px; }
+    .slider { height: 44px; }
+    .hero { height: 50vh; padding: 18px; }
+    .hero-title { font-size: 26px; }
+    .hero-desc { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+    .box, .box1, .box2, .box3, .box4, .box5 {
+        width: 94%; height: 30vh; min-width: unset; margin: 0 auto;
+    }
+    .slide { min-width: 240px; font-size: 13px; }
+    .slider { height: 40px; }
+    .hero { height: 45vh; padding: 12px; }
+    .hero-title { font-size: 20px; }
+    .hero-desc { font-size: 13px; }
+}
+
