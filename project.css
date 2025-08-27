@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: url("https://wallpapercave.com/wp/wp12575692.jpg") no-repeat center center/cover;
+  color: white;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 24px;
+}
+
+/* Grid Layout */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* Cards */
+.project-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Image */
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Tech */
+.tech {
+  font-size: 13px;
+  color: #f0db4f;
+  margin: 5px 0;
+}
+
+/* Links */
+.links a {
+  display: inline-block;
+  margin: 5px 5px;
+  padding: 6px 10px;
+  background: crimson;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+.links a:hover {
+  background: darkred;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+  font-size: 14px;
+}
